@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import Chatboticon from "./Components/Chatboticon";
-import ChatForm from "./Components/ChatForm";
-import ChatMessage from "./Components/ChatMessage";
+import Chatboticon from "./Components/Chatboticon.jsx";
+import ChatForm from "./Components/ChatForm.jsx";
+import ChatMessage from "./Components/ChatMessage.jsx";
 export const App = () => {
 const VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
