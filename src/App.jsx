@@ -3,7 +3,8 @@ import Chatboticon from "./Components/Chatboticon.jsx";
 import ChatForm from "./Components/ChatForm.jsx";
 import ChatMessage from "./Components/ChatMessage.jsx";
 export const App = () => {
-const VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
+let VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
+// "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
  const [ChatHistory, setChatHistory] = useState([]);
  const [showChatbot, setShowChatbot] = useState(false);
@@ -24,14 +25,14 @@ const VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/ge
       method: "POST",
       headers: {
               "Content-Type": "application/json",
-              "x-goog-api-key": "AIzaSyBs3YD7xZSft9StZBPmVNKMUZ4e3SonDrI"
+              "x-goog-api-key": "AIzaSyCfZG7VUv5DDGJfn7WJm72lSfxoWacDhR4"
                   },
       // header: {'Content-Type':'application/json'},
       body: JSON.stringify({contents:history})
     }
   try{
     // make the api call to get the bots response
-    const response = await fetch(VITE_API_URL,requestOptions);
+    const response = await fetch(import.meta.env.VITE_API_URL, requestOptions);
     const data = await response.json();
     if(!response.ok)throw new Error(data.error.message || "something went worng!");
     console.log(data)
