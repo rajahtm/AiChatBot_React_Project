@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Chatboticon from "./Components/Chatboticon.jsx";
 import ChatForm from "./Components/ChatForm.jsx";
 import ChatMessage from "./Components/ChatMessage.jsx";
+//
 export const App = () => {
 let VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
 // "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
