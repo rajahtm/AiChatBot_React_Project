@@ -1,4 +1,4 @@
-import Chatboticon from "./chatboticon";
+import Chatboticon from "./Chatboticon";
 const ChatMessage = ({chat}) => {
   return (
      <div className={`message ${chat.role === "model" ? 'bot' : "user"}-message`}>
