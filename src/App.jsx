@@ -4,8 +4,6 @@ import ChatForm from "./components/ChatForm.jsx";
 import ChatMessage from "./components/ChatMessage.jsx";
 //
 export const App = () => {
-let VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
-// "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent";
 
  const [ChatHistory, setChatHistory] = useState([]);
  const [showChatbot, setShowChatbot] = useState(false);
@@ -21,19 +19,30 @@ let VITE_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemi
   parts: [{ text: item.text }]
 }));
 
+// refarance of the api key and api url
+const API_KEY = import.meta.env.VITE_API_KEY;
+const API_URL = import.meta.env.VITE_API_URL;
+
+if (!API_KEY || !API_URL) {
+    console.error("API key or URL missing");
+    updateHistory("Configuration error. API not set.");
+    return;
+  }
+
+
      const requestOptions = {
 
       method: "POST",
       headers: {
-              "Content-Type": "application/json",
-              "x-goog-api-key": "AIzaSyCfZG7VUv5DDGJfn7WJm72lSfxoWacDhR4"
+              "Content-Type":  "application/json",
+              "x-goog-api-key":API_KEY,
                   },
       // header: {'Content-Type':'application/json'},
       body: JSON.stringify({contents:history})
     }
   try{
     // make the api call to get the bots response
-    const response = await fetch(import.meta.env.VITE_API_URL, requestOptions);
+    const response = await fetch(API_URL, requestOptions);
     const data = await response.json();
     if(!response.ok)throw new Error(data.error.message || "something went worng!");
     console.log(data)
